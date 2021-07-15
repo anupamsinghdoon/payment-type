@@ -24,7 +24,7 @@ exports.partial_yes_no =async function(context, event, callback) {
             "num_digits": 1,
             "finish_on_key": "#",
             "redirects": {
-              1: "task://payment_partial",
+              1: "task://collect_partial_Amount",
               2: "task://arrangement_yes_no"
             }            
           }
