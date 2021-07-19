@@ -17,7 +17,7 @@ exports.payment_partial =async function(context, event, callback) {
     Remember.userTotalBalance = Memory.userTotalBalance;
     Remember.payment_type = 2;
     Remember.from_task = "payment_partial";
-    let collect_question="Please tell me the amount you want to pay."; // Default 
+    let collect_question="Please tell me the amount you want to pay, for example, you can say fifty dollars and twenty five cents. or you can enter five zero asterisk two five ."; // Default 
     if(Memory.say_err_msg!=undefined)
     collect_question=Memory.say_err_msg;  
     console.log("say_err_msg: "+Memory.say_err_msg);
