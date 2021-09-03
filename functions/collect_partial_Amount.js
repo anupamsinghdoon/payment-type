@@ -50,12 +50,20 @@ exports.collect_partial_Amount =async function(context, event, callback) {
       Listen = false;      
       Redirect="task://payment_partial";
 
-  } 
-  else if ( payment_amount > Number(Memory.userTotalBalance) ) {
-      Say = `You entered the payment amount $${payment_amount} is more than your balance amount. `; 
-      Listen = false;
-      Redirect="task://payment_partial";
   }  
+  else if (payment_amount > Number(Memory.userTotalBalance)) {
+    payment_amount = payment_amount / 100;
+    Say = `Did you enter your payment amount is $${payment_amount}. Do you want to change the amount.`;
+    Remember.payment_amount = payment_amount;
+    Remember.question = 'payment_amount_check';
+    Listen = true;
+    Tasks = ['yes_no', 'agent_transfer', 'payment_partial'];
+  }
+  // else if ( payment_amount > Number(Memory.userTotalBalance) ) {
+  //     Say = `You entered the payment amount $${payment_amount} is more than your balance amount. `; 
+  //     Listen = false;
+  //     Redirect="task://payment_partial";
+  // }  
 
   //End of your code.
   
